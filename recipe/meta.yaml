@@ -1,5 +1,5 @@
 {% set name = "pyre-extensions" %}
-{% set version = "0.0.24" %}
+{% set version = "0.0.25" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyre-extensions-{{ version }}.tar.gz
-  sha256: 9554134f630d5918697786d0e1bbba243114b3d20d9bac60d3382763873e72c8
+  sha256: 7c18545695cd65d95bb17ee19c0749aae6698b99c456a464079a795018380987
 
 build:
   noarch: python
