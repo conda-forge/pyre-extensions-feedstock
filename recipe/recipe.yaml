@@ -1,0 +1,47 @@
+schema_version: 1
+
+context:
+  name: pyre-extensions
+  version: "0.0.32"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: 5396715f14ea56c4d5fd0a88c57ca7e44faa468f905909edd7de4ad90ed85e55
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - typing_inspect
+    - typing-extensions
+
+tests:
+  - python:
+      imports:
+        - pyre_extensions
+      pip_check: true
+      python_version:
+        - ${{ python_min }}
+        - "*"
+
+about:
+  summary: Type system extensions for use with the pyre type checker
+  license: MIT
+  license_file: LICENSE
+  homepage: https://pyre-check.org
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
